@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "mobx-react": "^5.4.2",
     "moment": "^2.22.2",
     "rc-checkbox": "^2.1.5",
     "react": "^16.5.2",
     "react-date-picker": "^7.0.0",
     "react-datepicker": "^1.7.0",
     "react-dom": "^16.5.2",
+    "react-html-id": "^0.1.4",
     "react-scripts": "2.0.5"
   },
   "scripts": {

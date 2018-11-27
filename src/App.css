@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(224, 233, 240);
+  background-color:#53678d;
 }
 
 .App {
@@ -20,10 +20,7 @@ body {
 }
 
 .App-header {
-  border-radius: 3px;
-  background-color: #282c34;
-  width: 90%;
-  height: 200px;
+
 }
 .topic {
   line-height: 1.4;

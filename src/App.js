@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import "./App.css";
-import Info from "./Info";
+import Info from "./Components/Info";
 import data from "./data";
-import TodoLists from "./TodoLists";
-import ItemCreate from "./ItemCreate";
+import TodoLists from "./Components/TodoLists";
+import ItemCreate from "./Components/ItemCreate";
+import { inject, observer } from 'mobx-react'
 
-
+@inject('TaskStore')
+@observer
 class App extends Component {
   state = {
-    todos: data
+    todos: data,
+    el: []
   };
 
   handleClick = (id) => {
@@ -21,27 +24,37 @@ class App extends Component {
     });
     this.setState({ todos: newTodos });
   };
-  removeItem = (id, e) => {
-    let newState = this.state.todos
 
-
-    console.log(indexOfTask)
-    let filt = newState.filter((item, index) => {
-
-      return item.id !== id
-
-    });
-    console.log(filt)
-    let indexOfTask = newState[filt]
-    let x = newState.splice(indexOfTask, 1)
-    // newState.splice(item, 1)
-
-    this.setState(x)
-
+  removeItem = (index, e) => {
+    const todosCopy = Object.assign([], this.state.todos)
+    todosCopy.splice(index, 1)
+    this.setState({ todos: todosCopy })
   }
 
+  // handleUpdate = (index) => {
+  //   this.setState({
+  //     todos: [index.target.value]
+  //   })
+  //   alert('sumo')
+  // }
+
+  changeItem = (e) => {
+    console.log(e.target.value)
+    this.setState({ el: [e.target.value] })
+    // let index = this.state.el.findIndex((task) => {
+    //   return task.id === id
+
+    // })
+    // let el = Object.assign({}, this.state.el[index])
+
+    // el = e.target.value  //voncvor ba chi anum
+    // console.log(e.target.value)
+    // let some = Object.assign([], this.state.el)
+    // some[index] = el
+    // this.setState({ el: some })
+  }
   render() {
-    let listData = this.state.todos.map(item => (
+    let listData = this.state.todos.map((item, index) => (
       <TodoLists
         key={item.id}
         description={item.description}
@@ -49,20 +62,10 @@ class App extends Component {
         done={item.done}
         id={item.id}
         handleClick={this.handleClick}
-        removeItem={this.removeItem}
+        removeItem={this.removeItem.bind(this, index)}
+      // changeEv={this.changeItem.bind(this, item.id)}
       />
-
     ));
-
-    // console.log(data[1].deadline = new Date(2021 / 23 / 11))
-    // let push = data.push(
-    //   {
-    //     "id": 12,
-    //     "description": "qwqwqw out of bed",
-    //     "deadline": "2022-09-11",
-    //     "done": false
-    //   }
-    // )
 
     if (listData.length === 0) {
       return (
