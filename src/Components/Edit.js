@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemCreate from './ItemCreate';
+
 
 
 class Edit extends React.Component {
@@ -25,7 +25,7 @@ class Edit extends React.Component {
     }
     handleCancel = () => {
 
-        this.setState({ el: '' })
+        this.setState({ edit: true })
 
     }
 

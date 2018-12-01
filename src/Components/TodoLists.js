@@ -5,29 +5,17 @@ import Edit from './Edit'
 
 
 export default class TodoLists extends React.Component {
-  // constructor(props) {
-  //   super(props);
 
-  //   this.state = {
-  //     el: []
-
-  //   }
-  // }
   render() {
 
-    let { description, deadline, done, id, handleClick, removeItem, changeEv } = this.props;
-    // handleUpdate = (index) => {
-    //   this.setState({
-    //     el: [index.target.value]
-    //   })
-    // }
+    let { description, deadline, done, id, removeItem, changeEv, handleChck } = this.props;
     return (
       <div className="list">
 
         <ul>
           <li>
 
-            <input type="checkbox" defaultChecked={done} onChange={handleClick} />
+            <input type="checkbox" defaultChecked={done} onChange={handleChck} />
 
 
             <label>{description} / {deadline} {done}/    </label>

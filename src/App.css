@@ -7,8 +7,10 @@ body {
 }
 
 .App-logo {
-  padding-top: 120px;
-  animation: App-logo-spin infinite 6s linear;
+  
+  padding-top: 160px;
+  animation: App-logo-spin infinite 9s linear;
+
 }
 @keyframes App-logo-spin {
   from {
@@ -19,9 +21,9 @@ body {
   }
 }
 
-.App-header {
+/* .App-header {
 
-}
+} */
 .topic {
   line-height: 1.4;
   width: 20%;

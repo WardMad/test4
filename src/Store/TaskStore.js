@@ -14,40 +14,24 @@ class TaskStore extends React.Component {
     // ];
     @observable todo = [];
 
-    @observable elem = []
-    //callback
-    @observable posts = {
-        data: [],
-        status: ['loading']
-    }
+    // @observable elem = []
 
-    @action addTask = (task) => {
-        this.todo.push(task)
+    @action addTask = (task) => { this.todo.push(task) };
 
-    }
-    @action deleteTask = (id) => {
+    //     @action handleChck = (id, e) => {
+    //  this.todo.forEach(todo => {
+    //             if (todo.id === id) {
+    //                 todo.done = !todo.done;
+    //                 console.log(todo)
+    //             }
+    //         });
 
-        this.todo.forEach((todo, index) => {
-            console.log(todo + index)
-            if (index === 0) {
-                index = -1
-                this.todo.splice(index, 1)
-            }
-        })
-    }
+    // }
 
-    @action changeBox = () => {
-        this.posts.data.forEach(todo => {
-            if (todo.done === true) {
-                todo.done = !todo.done;
-            }
-        });
-    }
 
     @computed get numberOfTodos() {
         return this.todo.length;
-    }
-
+    };
 
 }
 

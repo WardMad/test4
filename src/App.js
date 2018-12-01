@@ -9,12 +9,12 @@ import { inject, observer } from 'mobx-react'
 @inject('TaskStore')
 @observer
 class App extends Component {
+  //the bottom state is local
   state = {
-    todos: data,
-    el: []
+    todos: data
   };
 
-  handleClick = (id) => {
+  handleChck = (id) => {
     const newTodos = this.state.todos;
 
     newTodos.forEach(todo => {
@@ -31,29 +31,25 @@ class App extends Component {
     this.setState({ todos: todosCopy })
   }
 
-  // handleUpdate = (index) => {
-  //   this.setState({
-  //     todos: [index.target.value]
-  //   })
-  //   alert('sumo')
+
+  // changeItem = (e) => {
+  //   console.log(e.target.value)
+  //   this.setState({ el: [e.target.value] })
+  //   // let index = this.state.el.findIndex((task) => {
+  //   //   return task.id === id
+
+  //   // })
+  //   // let el = Object.assign({}, this.state.el[index])
+
+  //   // el = e.target.value  //voncvor ba chi anum
+  //   // console.log(e.target.value)
+  //   // let some = Object.assign([], this.state.el)
+  //   // some[index] = el
+  //   // this.setState({ el: some })
   // }
-
-  changeItem = (e) => {
-    console.log(e.target.value)
-    this.setState({ el: [e.target.value] })
-    // let index = this.state.el.findIndex((task) => {
-    //   return task.id === id
-
-    // })
-    // let el = Object.assign({}, this.state.el[index])
-
-    // el = e.target.value  //voncvor ba chi anum
-    // console.log(e.target.value)
-    // let some = Object.assign([], this.state.el)
-    // some[index] = el
-    // this.setState({ el: some })
-  }
   render() {
+
+
     let listData = this.state.todos.map((item, index) => (
       <TodoLists
         key={item.id}
@@ -61,23 +57,26 @@ class App extends Component {
         deadline={item.deadline}
         done={item.done}
         id={item.id}
-        handleClick={this.handleClick}
+        handleChck={this.handleChck}
         removeItem={this.removeItem.bind(this, index)}
-      // changeEv={this.changeItem.bind(this, item.id)}
       />
+
     ));
 
     if (listData.length === 0) {
       return (
         <div className="App">
           <h3>Ther are no To-do's today!</h3>
+          <ItemCreate />
         </div>
       );
     }
 
     return (
       <div className="App">
+
         <div> <ItemCreate /></div>
+
         {listData}
 
         <div><Info /></div>
